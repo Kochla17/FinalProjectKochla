@@ -405,7 +405,7 @@ MonoBehaviour:
   prefab: {fileID: 5452896591389557667, guid: 4ef08c8f1cb003541861d205b11d3112, type: 3}
   spawnRate: 1
   minHeight: -1
-  maxHeight: 1
+  maxHeight: 2
 --- !u!4 &710493463
 Transform:
   m_ObjectHideFlags: 0
@@ -604,6 +604,7 @@ GameObject:
   - component: {fileID: 1131844860}
   - component: {fileID: 1131844859}
   - component: {fileID: 1131844862}
+  - component: {fileID: 1131844863}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Obstacle
@@ -692,6 +693,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
+--- !u!61 &1131844863
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131844858}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1186607303
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +820,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1186607306}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1594447822}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1186607306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -978,10 +1037,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539c6231dd893df459c1fc01042f97a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  scoreText: {fileID: 0}
-  playButton: {fileID: 0}
-  gameOver: {fileID: 0}
+  player: {fileID: 736731905}
+  scoreText: {fileID: 1984083017}
+  playButton: {fileID: 1186607303}
+  gameOver: {fileID: 253907803}
 --- !u!4 &1594447823
 Transform:
   m_ObjectHideFlags: 0
@@ -994,8 +1053,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2007474909}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984083014
@@ -1127,7 +1185,7 @@ RectTransform:
   - {fileID: 1984083015}
   - {fileID: 253907804}
   - {fileID: 1186607304}
-  m_Father: {fileID: 1594447823}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1207,4 +1265,5 @@ SceneRoots:
   - {fileID: 1131844861}
   - {fileID: 710493463}
   - {fileID: 1594447823}
+  - {fileID: 2007474909}
   - {fileID: 688196657}
