@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
+    public GameObject GetReady;
     public Player player;
     public Text scoreText;
     public GameObject playButton;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
 
         playButton.SetActive(false);
         gameOver.SetActive(false);
-
+        GetReady.SetActive(false);
         Time.timeScale = 1f;
         player.enabled = true;
 
@@ -37,13 +38,24 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         player.enabled = false;
+        gameOver.SetActive(false);  
+
+    }
+    public void Pause1()
+    {
+        Time.timeScale = 0f;
+        player.enabled = false;
+        gameOver.SetActive(true);
+
     }
 
     public void GameOver()
     {
-        gameOver.SetActive(true);
+        
         playButton.SetActive(true);
-        Pause();
+        GetReady.SetActive(false );
+        gameOver.SetActive(true);
+        Pause1();
     }
 
     public void IncreaseScore()
