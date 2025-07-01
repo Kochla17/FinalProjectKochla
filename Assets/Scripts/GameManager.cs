@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject playButton;
     public GameObject gameOver;
     private int score;
-    private void Awake ()
+    private void Awake()
     {
         Application.targetFrameRate = 60;
         Pause();
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         player.enabled = false;
-        gameOver.SetActive(false);  
+        gameOver.SetActive(false);
 
     }
     public void Pause1()
@@ -51,9 +51,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        
+
         playButton.SetActive(true);
-        GetReady.SetActive(false );
+        GetReady.SetActive(false);
         gameOver.SetActive(true);
         Pause1();
     }
@@ -61,6 +61,43 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         score++;
-        scoreText.text = score.ToString(); 
+        scoreText.text = score.ToString();
+
+        if (score % 10 == 0)
+        {
+            // Increase pipe speed significantly
+            Pipes[] pipes = FindObjectsOfType<Pipes>();
+            foreach (Pipes pipe in pipes)
+            {
+                pipe.speed += 1.5f; // Strong increase
+            }
+
+            // Make sure future pipes also spawn faster
+            Spawner spawner = FindObjectOfType<Spawner>();
+            if (spawner != null)
+            {
+                GameObject pipePrefab = spawner.prefab;
+                if (pipePrefab != null && pipePrefab.GetComponent<Pipes>() != null)
+                {
+                    pipePrefab.GetComponent<Pipes>().speed += 1.5f;
+                }
+            }
+            if (score >= 10) // You can change 50 to any final score
+            {
+                Win();
+            }
+
+            // Increase gravity and jump strength to keep pace
+            player.gravity -= 1.2f;     // Fall faster
+            player.strenght += 0.8f;    // Jump harder
+        }
     }
+    public void Win()
+    {
+        Pause();
+        gameOver.SetActive(true);
+        gameOver.GetComponentInChildren<Text>().text = "YOU WIN!";
+        playButton.SetActive(true);
+    }
+
 }
