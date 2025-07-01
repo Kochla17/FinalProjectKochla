@@ -4,7 +4,7 @@ public class Pipes : MonoBehaviour
 {
     public float speed = 5.0f;
     private float leftEdge;
-    public float pipeSpeed;
+
     private void Start()
     {
         leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
@@ -19,4 +19,3 @@ public class Pipes : MonoBehaviour
         }
     }
 }
-    

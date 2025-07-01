@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
                     pipePrefab.GetComponent<Pipes>().speed += 1.5f;
                 }
             }
-            if (score >= 10) // You can change 50 to any final score
+            if (score >= 50) // You can change 50 to any final score
             {
                 Win();
             }

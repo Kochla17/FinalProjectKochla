@@ -3,11 +3,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject prefab;
-    public float spawnRate = 1.0f;     // Initial spawn interval in seconds
-    public float minHeight = -1.0f;    // Min vertical spawn offset
-    public float maxHeight = 1.0f;     // Max vertical spawn offset
-
+    public float spawnRate = 1.0f;
+    public float minHeight = -1.0f;
+    public float maxHeight = 1.0f;
     private void OnEnable()
+
     {
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
@@ -21,14 +21,5 @@ public class Spawner : MonoBehaviour
     {
         GameObject pipes = Instantiate(prefab, transform.position, Quaternion.identity);
         pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
-    }
-
-    // Call this method to change spawn rate dynamically at runtime
-    public void SetSpawnRate(float newRate)
-    {
-        spawnRate = newRate;
-
-        CancelInvoke(nameof(Spawn));
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
 }
